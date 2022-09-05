@@ -8,9 +8,9 @@ import FeaturedRooms from '../components/FeaturedRooms';
 export default function Home() {
     return (
         <>
-        {/* <Hero hero="defaultHero">
-        </Hero> */}
-        <Banner title="Luxurious Rooms" subtitle="deluxe rooms starting at R400 per night">
+        <Hero hero="defaultHero">
+        </Hero>
+        <Banner title="Rooms" subtitle="deluxe rooms starting at R1950 per night">
                 <Link to="/rooms" className="btn btn-primary">
                       Our Rooms
                 </Link>

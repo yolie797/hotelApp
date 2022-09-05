@@ -12,6 +12,9 @@ import About from './pages/About';
 import Footer from './components/Footer';
 import Contact from './pages/Contact';
 import Booknow from './pages/Booknow';
+import Login from './pages/Login';
+import Logout from './components/Logout';
+import Register from './pages/Register';
 
 function App() {
   return (
@@ -19,12 +22,16 @@ function App() {
       <BrowserRouter>
         <Navbar/>
         <Switch>
+          {/* <Route exact path="/" component={Login}/> */}
           <Route exact path="/" component={Home} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/contact" component={Contact} />
-          <Route exact path="/rooms/" component={Rooms}/>
-          <Route exact path="/rooms/:slug" component={SingleRoom} />
-          <Route exact path="/booknow/:slug" component={Booknow} />
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
+          <Route path="/rooms/" component={Rooms}/>
+          <Route path="/rooms/:slug" component={SingleRoom} />
+          <Route path="/booknow/:slug" component={Booknow} />
+          <Route path='/login' component={Login}/>
+          <Route path="/logout" component={Logout}/>
+          <Route path='/register' component={Register}/>
           <Route component={Error}/>
         </Switch>
         <Footer/>
