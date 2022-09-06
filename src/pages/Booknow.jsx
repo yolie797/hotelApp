@@ -10,8 +10,9 @@ import defaultBcg from '../images/room-3.jpeg';
 export default class Booknow extends Component {
     constructor (props){
         super(props);
+        console.log(this.props);
         this.state = {
-        slug: this.props.match.params.slug,
+        id: this.props.match.params.id,
         defaultBcg,
         startDate: new Date(),
         endDate: new Date(),
@@ -37,7 +38,7 @@ export default class Booknow extends Component {
     static contextType = RoomContext;
     render() {
         const { getRoom } = this.context;
-        const room = getRoom(this.state.slug);
+        const room = getRoom(this.state.id);
         const { startDate, endDate } = this.state;
         const daysLeft = this.calculateDaysLeft(startDate, endDate);
     if(!room){
@@ -114,8 +115,8 @@ export default class Booknow extends Component {
                             <mark>Please make sure Checkin time is from 9 am to 12 pm</mark>
                         </div>
                         <div className="col-md-6 col-12">
-                            <h6 className="font-weight-bold">Price per day : <span className="badge badge-info">Rs {price}</span></h6>
-                            <h6 className="font-weight-bold">Total Price to be paid : <span className="text-primary">Rs {daysLeft*price}</span></h6>
+                            <h6 className="font-weight-bold">Price per day : <span className="badge badge-info">R {price}</span></h6>
+                            <h6 className="font-weight-bold">Total Price to be paid : <span className="text-primary">R {daysLeft*price}</span></h6>
                         </div>
                     </div>
                     <div className="row my-4">
@@ -132,26 +133,17 @@ export default class Booknow extends Component {
                         </div>
                         <div className="col-md-6 col-12 my-auto">
                             <div className="col-md-6 col-12 float-right">
-                                <button className="btn btn-block btn-outline-primary" data-toggle="modal" data-target="#thanks">Confirm Booking</button>
+                                <button className="btn btn-block btn-outline-primary" data-toggle="modal" data-target="#thanks">
+                                <Link to='/login'>Confirm Booking</Link></button>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div className="modal fade" id="thanks">
-                <div className="modal-dialog modal-dialog-centered">
-                    <div className="modal-content">
-                        <div className="modal-body p-4">
-                            <h3>Thank you </h3>
-                            <p className="lead">Your room is booked successfully....</p>
-                        </div>
-                        <div className="modal-footer">
-                            <Link to="/" className="btn btn-dark">Goto Home</Link>
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        
+
+            
         </div>
         )
     }

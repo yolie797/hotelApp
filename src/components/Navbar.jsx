@@ -13,7 +13,7 @@ const Navbar = () => {
     <>
         <nav className="navbar navbar-expand-sm navbar-dark bg-transparent py-2 fixed-top">
             <div className="container-fluid ">
-                <span className="navbar-brand font-weight-bolder">Luxury Palace</span>
+                <span className="navbar-brand font-weight-bolder">HOTEL JUBILANT</span>
                 <a href="void(0)" className="navbar-toggler border-0" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span>
                         <FaAlignRight className="nav-icon" /></span>
@@ -42,7 +42,7 @@ const Navbar = () => {
                             <NavLink className="nav-link"   to="/contact">Contact</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link"   to="/contact">Log Out</NavLink>
+                            <NavLink className="nav-link"   to="/login">Sign In</NavLink>
                         </li>
                     </ul>
                 </div>

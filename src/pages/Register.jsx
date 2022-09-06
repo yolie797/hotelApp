@@ -1,30 +1,48 @@
 import React from 'react'
+import { useState } from 'react';
 // import "../css/register.css"
 // import background from '../pictures/back.jpg'
-import {Link} from "react-router-dom"
-
+import {useHistory} from "react-router-dom"
+import { useUserAuth } from '../context2';
 
 
 const Register = () => {
+    const [email,setEmail]=useState("");
+    const [password,setPassword]=useState("");
+    const [error,setError]=useState("");
+    const {signUp}=useUserAuth();
+    const navigate=useHistory();
+  
+    const handle = async (e) => {
+      e.preventDefault();
+      setError("");
+      try {
+          await signUp(email,password)
+        //   alert("successfully Register");
+          navigate.push('/payments');
+          
+      } catch (error) {
+          setError(error.message);
+      }
+  };
+    
   return (
    <>
-    <div className='container'>
+    <div className='containerreg'>
 
-    <div className='logo'>
-        <h1>HOTEL JUBILANT</h1>
-    </div>
+   
         <div className='pic'></div>
         <div className='Register'>
-        <h2>HJ Registration Form</h2>
+        <h2>Registration Form</h2>
 
-        <div className='input'>
+        {/* <div className='input'>
             <label>Name</label>
             <input id='input' typeof='name'/>
         </div>
 
         <div className='input'>
             <label>Surname</label>
-            <input id='input' typeof='surname'/>
+            <input id='input' typeof='surname' required/>
         </div>
 
         <div className='input'>
@@ -45,21 +63,21 @@ const Register = () => {
         <div className='input'>
             <label>Phone</label>
             <input id='input' typeof='text'/>
-        </div>
+        </div> */}
 
         <div className='input'>
             <label>Email Address</label>
-            <input id='input' typeof='Email'/>
+            <input id='input' placeholder="Enter your email" onChange={(e)=>setEmail(e.target.value)} />
         </div>
 
         <div className='input'>
             <label>Password</label>
-            <input id='input'  typeof='password'/>
+            <input id='input'  placeholder="Enter your email" onChange={(e)=>setPassword(e.target.value)} />
         </div>
 
-        <div className='btn'>
-            <button className='btn'>
-            <Link to='/Login'/>
+        <div className='btn-reg'>
+            <button className='btn' onClick={handle}>
+           Register
             </button>
             
             

@@ -4,7 +4,7 @@ import defaultImg from '../images/room-1.jpeg';
 import PropTypes from 'prop-types';
 
 export default function Room({room}) {
-    const { name , slug, images, price } = room;
+    const { name , id, images, price } = room;
     return (
         <div className="col-md-4 col-12 mx-auto p-2">
             <div className="card shadow-lg border-0 room">
@@ -13,7 +13,7 @@ export default function Room({room}) {
                     <h6>R {price}</h6>
                     <p>per night</p>
                 </div>
-                <Link to={`/rooms/${slug}`} className="btn-warning room-link text-center" >Features</Link>
+                <Link to={`/rooms/${id}`} className="btn-warning room-link text-center" >Features</Link>
               <p className="room-info">{name}</p>
             </div>
         </div>
@@ -23,7 +23,7 @@ export default function Room({room}) {
 Room.propTypes = {
     room: PropTypes.shape({
         name:PropTypes.string.isRequired,
-        slug:PropTypes.string.isRequired,
+        id:PropTypes.string.isRequired,
         images:PropTypes.arrayOf(PropTypes.string).isRequired,
         price:PropTypes.number.isRequired,
     })
