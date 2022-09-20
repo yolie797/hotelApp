@@ -12,8 +12,8 @@ import About from './pages/About';
 // import Footer from './components/Footer';
 import Contact from './pages/Contact';
 import Booknow from './pages/Booknow';
-import Login from './pages/Login';
-import Register from './pages/Register';
+// import Login from './pages/Login';
+// import Register from './pages/Register';
 import Payment from './pages/Payments';
 
 function App() {
@@ -30,8 +30,8 @@ function App() {
           <Route path="/rooms/" component={Rooms}/>
           <Route path="/booknow/:id" component={Booknow} />
           <Route path='/payments' component={Payment}/>
-          <Route path='/login' component={Login}/>
-          <Route path='/register' component={Register}/>
+          {/* <Route path='/login' component={Login}/>
+          <Route path='/register' component={Register}/> */}
           <Route component={Error}/>
         </Switch>
         {/* <Footer/> */}

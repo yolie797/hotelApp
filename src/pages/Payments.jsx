@@ -19,8 +19,8 @@ const Payment = () => {
         alert("Thank you...Your room is booked successfully....");
         navigate.push('/');
         
-    } catch (err) {
-        setError(err.message);
+    } catch (error) {
+        setError(error.message);
     }
 };
 
@@ -65,19 +65,19 @@ const Payment = () => {
 
         </div> */}
 
-        <form action="">
+        <form action="" onSubmit={handleSubmit}>
           <div className="inputBox">
             <span>card number</span>
-            <input type="text" maxLength="16" className="card-number-input" required />
+            <input type="text" maxLength="16" className="card-number-input" />
           </div>
           <div className="inputBox">
             <span>card holder</span>
-            <input type="text" className="card-holder-input" required/>
+            <input type="text" className="card-holder-input" />
           </div>
           <div className="flexbox">
             <div className="inputBox">
               <span>expiration mm</span>
-              <select name="" id="" className="month-input" required>
+              <select name="" id="" className="month-input" >
                 <option defaultValue="month">month</option>
                 <option value="01">01</option>
                 <option value="02">02</option>
@@ -95,7 +95,7 @@ const Payment = () => {
             </div>
             <div className="inputBox">
               <span>expiration yy</span>
-              <select name="" id="" className="year-input" required>
+              <select name="" id="" className="year-input" >
                 <option defaultValue="year">year</option>
                 <option value="2021">2021</option>
                 <option value="2022">2022</option>
@@ -111,10 +111,10 @@ const Payment = () => {
             </div>
             <div className="inputBox" >
               <span>cvv</span>
-              <input type="text" maxLength='3' className="cvv-input" required/>
+              <input type="text" maxLength='3' className="cvv-input" />
             </div>
           </div>
-          <input type="submit" value="Confirm Booking" className="submit-btn" onClick={handleSubmit}/>
+          <input type="submit" value="Confirm Booking" className="submit-btn" />
         </form>
 
       </div>

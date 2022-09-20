@@ -1,17 +1,20 @@
-import React, { Component } from 'react'
+import React, { Component ,useState} from 'react'
 import defaultBcg from '../images/room-3.jpeg';
 import Banner from '../components/Banner';
 import { Link } from 'react-router-dom';
 import { RoomContext } from '../context';
 import StyledHero from '../components/StyledHero';
 import { useParams } from 'react-router-dom';
+import { db } from "../firebase";
+import { collection, addDoc } from "firebase/firestore";
 
 function ComponentWithRouter(props) {
     let params = useParams()
     return <Component {...props} params={params} />
   }
-
+ 
 export default class SingleRoom extends Component {
+    
     constructor (props){
         super(props);
         this.state = {
@@ -38,6 +41,21 @@ export default class SingleRoom extends Component {
         }
         const {name,description,capacity,size,price,extras,breakfast,pets,images} = room;
         const [mainImg, ...defaultBcg] = images;
+
+        const add=((props)=>{
+            const collectionRef=collection(db,"bookings");
+            
+            const bookings ={
+             room:room,
+             
+            };
+            addDoc(collectionRef,bookings).then(()=>{
+              alert("Task Added Succcessfully")
+            }).catch((error)=>{
+              console.log(error);
+            })
+            // props.add(room);
+          })
         return (
             <>
             <StyledHero img={mainImg || this.state.defaultBcg }>
@@ -85,7 +103,7 @@ export default class SingleRoom extends Component {
                 <div className="p-4 clearfix">
                     <div className="row">
                        <div className="col-md-3 col-12 ml-auto">
-                          <Link to={`/booknow/${this.state.id}`} className="btn btn-outline-primary btn-block btn-lg float-right ">Book Now</Link>
+                          <Link to={`/booknow/${this.state.id}`} className="btn btn-outline-primary btn-block btn-lg float-right " onClick={add}>Book Now</Link>
                        </div>
                     </div>
                 </div>
