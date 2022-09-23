@@ -42,6 +42,8 @@ export default class SingleRoom extends Component {
         const {name,description,capacity,size,price,extras,breakfast,pets,images} = room;
         const [mainImg, ...defaultBcg] = images;
 
+
+        
         const add=((props)=>{
             const collectionRef=collection(db,"bookings");
             
@@ -49,7 +51,7 @@ export default class SingleRoom extends Component {
              room:room,
              
             };
-            addDoc(collectionRef,bookings).then(()=>{
+            addDoc(collectionRef,room).then(()=>{
               alert("Task Added Succcessfully")
             }).catch((error)=>{
               console.log(error);
